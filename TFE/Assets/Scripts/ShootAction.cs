@@ -19,12 +19,21 @@ public class ShootAction : MonoBehaviour
     //Temps entre chaque tir (en secondes) 
     public float fireRate = 0.1f;
 
+    //Son pour le fire
+    public AudioClip audioFire = null;
+
+    private AudioSource gun_AudioSource;
+
     //Float : mémorise le temps du prochain tir possible
     private float nextFire;
 
     //Détermine sur quel Layer on peut tirer
     public LayerMask layerMask;
 
+    private void Awake()
+    {
+        gun_AudioSource = GetComponent<AudioSource>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +52,9 @@ public class ShootAction : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
         {
             //Nouveau tir
+
+            //Son au tir
+            gun_AudioSource.PlayOneShot(audioFire);
 
             //Met à jour le temps pour le prochain tir
             //Time.time = Temps écoulé depuis le lancement du jeu

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ReceiveAction : MonoBehaviour
 {
     //Maximum de points de vie
-    public int maxHitPoint = 5;
+    public int maxHitPoint = 1;
 
     //Points de vie actuels
     public int hitPoint = 0;
