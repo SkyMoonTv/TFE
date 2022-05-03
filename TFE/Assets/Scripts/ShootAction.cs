@@ -5,41 +5,53 @@ using UnityEngine;
 public class ShootAction : MonoBehaviour
 {
     //Dommage que le Gun inflige
-    public int gunDamage = 1;
+    [SerializeField]
+    private int gunDamage = 1;
 
-    //Portée du tir
-    public float weaponRange = 200f;
+    //Portï¿½e du tir
+    [SerializeField]
+    private float weaponRange = 200f;
 
     //Force de l'impact du tir
-    public float hitForce = 100f;
+    [SerializeField]
+    private float hitForce = 100f;
 
-    //La caméra
+    //La camï¿½ra
     private Camera fpsCam;
 
-    //Temps entre chaque tir (en secondes) 
-    public float fireRate = 0.1f;
+    //Temps entre chaque tir (en secondes)
+    [SerializeField]
+    private float fireRate = 0.1f;
 
     //Son pour le fire
-    public AudioClip audioFire = null;
+    [SerializeField]
+    private AudioClip audioFire = null;
+    //Son pour le Hit
+    [SerializeField]
+    private AudioClip audioHit = null;
 
     private AudioSource gun_AudioSource;
 
-    //Float : mémorise le temps du prochain tir possible
+    private AudioSource hit_AudioSource;
+
+    //Float : mï¿½morise le temps du prochain tir possible
     private float nextFire;
 
-    //Détermine sur quel Layer on peut tirer
-    public LayerMask layerMask;
+    //Dï¿½termine sur quel Layer on peut tirer
+    [SerializeField]
+    private LayerMask layerMask;
 
     private void Awake()
     {
         gun_AudioSource = GetComponent<AudioSource>();
+        hit_AudioSource = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
 
-        //Référence de la caméra. GetComponentInParent<Camera> permet de chercher une Camera
+        //Rï¿½fï¿½rence de la camï¿½ra. GetComponentInParent<Camera> permet de chercher une Camera
         //dans ce GameObject et dans ses parents.
         fpsCam = GetComponentInParent<Camera>();
     }
@@ -47,8 +59,8 @@ public class ShootAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Vérifie si le joueur a pressé le bouton pour faire feu (ex:bouton gauche souris)
-        // Time.time > nextFire : vérifie si suffisament de temps s'est écoulé pour pouvoir tirer à nouveau
+        // Vï¿½rifie si le joueur a pressï¿½ le bouton pour faire feu (ex:bouton gauche souris)
+        // Time.time > nextFire : vï¿½rifie si suffisament de temps s'est ï¿½coulï¿½ pour pouvoir tirer ï¿½ nouveau
         if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
         {
             //Nouveau tir
@@ -56,39 +68,41 @@ public class ShootAction : MonoBehaviour
             //Son au tir
             gun_AudioSource.PlayOneShot(audioFire);
 
-            //Met à jour le temps pour le prochain tir
-            //Time.time = Temps écoulé depuis le lancement du jeu
-            //temps du prochain tir = temps total écoulé + temps qu'il faut attendre
+            //Met ï¿½ jour le temps pour le prochain tir
+            //Time.time = Temps ï¿½coulï¿½ depuis le lancement du jeu
+            //temps du prochain tir = temps total ï¿½coulï¿½ + temps qu'il faut attendre
             nextFire = Time.time + fireRate;
 
             print(nextFire);
 
             //On va lancer un rayon invisible qui simulera les balles du gun
 
-            //Crée un vecteur au centre de la vue de la caméra
+            //Crï¿½e un vecteur au centre de la vue de la camï¿½ra
             Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
 
-            //RaycastHit : permet de savoir ce que le rayon a touché
+            //RaycastHit : permet de savoir ce que le rayon a touchï¿½
             RaycastHit hit;
 
 
-            // Vérifie si le raycast a touché quelque chose
+            // Vï¿½rifie si le raycast a touchï¿½ quelque chose
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange, layerMask))
             {
                 print("Target");
 
-                // Vérifie si la cible a un RigidBody attaché
+                // Vï¿½rifie si la cible a un RigidBody attachï¿½
                 if (hit.rigidbody != null)
                 {
 
                     //AddForce = Ajoute Force = Pousse le RigidBody avec la force de l'impact
                     hit.rigidbody.AddForce(-hit.normal * hitForce);
 
-                    //S'assure que la cible touchée a un composant ReceiveAction
+                    //S'assure que la cible touchï¿½e a un composant ReceiveAction
                     if (hit.collider.gameObject.GetComponent<ReceiveAction>() != null)
                     {
-                        //Envoie les dommages à la cible
+                        //Envoie les dommages ï¿½ la cible
                         hit.collider.gameObject.GetComponent<ReceiveAction>().GetDamage(gunDamage);
+
+                        hit_AudioSource.PlayOneShot(audioHit);
                     }
                 }
             }

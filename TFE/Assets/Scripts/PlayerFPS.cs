@@ -3,19 +3,23 @@ using UnityEngine;
 public class PlayerFPS : MonoBehaviour
 {
     //Camera
-    public Camera playerCamera;
+    [SerializeField]
+    private Camera playerCamera;
 
     //Composant qui permet de faire bouger le joueur
     CharacterController characterController;
 
     //Vitesse de marche
-    public float walkingSpeed = 7.5f;
+    [SerializeField]
+    private float walkingSpeed = 7.5f;
 
     //Vitesse de course
-    public float runningSpeed = 15f;
+    [SerializeField]
+    private float runningSpeed = 15f;
 
     //Vitesse de saut
-    public float jumpSpeed = 8f;
+    [SerializeField]
+    private float jumpSpeed = 6f;
 
     //Gravité
     float gravity = 20f;
