@@ -1,9 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ShootAction : MonoBehaviour
 {
+    //Creation UnityEvent
+    public UnityEvent<GameObject> OnFire;
+
     //Dommage que le Gun inflige
     [SerializeField]
     private int gunDamage = 1;
@@ -41,6 +43,9 @@ public class ShootAction : MonoBehaviour
     [SerializeField]
     private LayerMask layerMask;
 
+    [SerializeField]
+    private LayerMask noLayerMask;
+
     private void Awake()
     {
         gun_AudioSource = GetComponent<AudioSource>();
@@ -68,12 +73,12 @@ public class ShootAction : MonoBehaviour
             //Son au tir
             gun_AudioSource.PlayOneShot(audioFire);
 
+            OnFire.Invoke(this.gameObject);
+
             //Met � jour le temps pour le prochain tir
             //Time.time = Temps �coul� depuis le lancement du jeu
             //temps du prochain tir = temps total �coul� + temps qu'il faut attendre
             nextFire = Time.time + fireRate;
-
-            print(nextFire);
 
             //On va lancer un rayon invisible qui simulera les balles du gun
 
@@ -82,12 +87,10 @@ public class ShootAction : MonoBehaviour
 
             //RaycastHit : permet de savoir ce que le rayon a touch�
             RaycastHit hit;
-
-
+           
             // V�rifie si le raycast a touch� quelque chose
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange, layerMask))
             {
-                print("Target");
 
                 // V�rifie si la cible a un RigidBody attach�
                 if (hit.rigidbody != null)
@@ -95,14 +98,16 @@ public class ShootAction : MonoBehaviour
 
                     //AddForce = Ajoute Force = Pousse le RigidBody avec la force de l'impact
                     hit.rigidbody.AddForce(-hit.normal * hitForce);
-
+                    
                     //S'assure que la cible touch�e a un composant ReceiveAction
                     if (hit.collider.gameObject.GetComponent<ReceiveAction>() != null)
                     {
                         //Envoie les dommages � la cible
                         hit.collider.gameObject.GetComponent<ReceiveAction>().GetDamage(gunDamage);
 
+                        //Joue le son du Hit
                         hit_AudioSource.PlayOneShot(audioHit);
+
                     }
                 }
             }
