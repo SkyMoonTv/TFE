@@ -73,6 +73,7 @@ public class ShootAction : MonoBehaviour
             //Son au tir
             gun_AudioSource.PlayOneShot(audioFire);
 
+            //Active l'animation
             OnFire.Invoke(this.gameObject);
 
             //Met � jour le temps pour le prochain tir
