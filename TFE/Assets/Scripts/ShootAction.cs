@@ -88,15 +88,14 @@ public class ShootAction : MonoBehaviour
 
             //RaycastHit : permet de savoir ce que le rayon a touch�
             RaycastHit hit;
-           
-            // V�rifie si le raycast a touch� quelque chose
-            if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange, layerMask))
-            {
 
+            // V�rifie si le raycast a touch� quelque chose
+            if (Physics.Raycast(rayOrigin, fpsCam.transform.forward,out hit, weaponRange,layerMask))
+            {
+                
                 // V�rifie si la cible a un RigidBody attach�
                 if (hit.rigidbody != null)
                 {
-
                     //AddForce = Ajoute Force = Pousse le RigidBody avec la force de l'impact
                     hit.rigidbody.AddForce(-hit.normal * hitForce);
                     
@@ -108,7 +107,6 @@ public class ShootAction : MonoBehaviour
 
                         //Joue le son du Hit
                         hit_AudioSource.PlayOneShot(audioHit);
-
                     }
 
                     //S'assure que la cible touch�e a un composant ReceiveActionOpen
@@ -121,7 +119,7 @@ public class ShootAction : MonoBehaviour
                         hit_AudioSource.PlayOneShot(audioHit);
 
                     }
-                }
+                }   
             }
         }
     }

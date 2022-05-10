@@ -21,19 +21,19 @@ public class PlayerFPS : MonoBehaviour
     [SerializeField]
     private float jumpSpeed = 6f;
 
-    //Gravité
+    //Gravitï¿½
     float gravity = 20f;
 
-    //Déplacement
+    //Dï¿½placement
     Vector3 moveDirection;
 
     //Marche ou court ?
     private bool isRunning = false;
 
-    //Rotation de la caméra
+    //Rotation de la camï¿½ra
     float rotationX = 0;
     public float rotationSpeed = 2.0f;
-    public float rotationXLimit = 45.0f;
+    public float rotationXLimit = 75.0f;
 
 
     // Start is called before the first frame update
@@ -41,6 +41,7 @@ public class PlayerFPS : MonoBehaviour
     {
         //Cache le curseur de la souris
         Cursor.visible = false;
+        Cursor.lockState=CursorLockMode.Locked;
         characterController = GetComponent<CharacterController>();
     }
 
@@ -48,14 +49,14 @@ public class PlayerFPS : MonoBehaviour
     void Update()
     {
         //Calcule les directions
-        //forward = avant/arrière
+        //forward = avant/arriï¿½re
         //right = droite/gauche
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
         //Est-ce qu'on appuie sur un bouton de direction ?
 
-        // Z = axe arrière/avant
+        // Z = axe arriï¿½re/avant
         float speedZ = Input.GetAxis("Vertical");
 
         // X = axe gauche/droite
@@ -94,7 +95,7 @@ public class PlayerFPS : MonoBehaviour
 
 
         //Calcul du mouvement
-        //forward = axe arrière/avant
+        //forward = axe arriï¿½re/avant
         //right = axe gauche/droite
         moveDirection = forward * speedZ + right * speedX;
 
@@ -114,8 +115,8 @@ public class PlayerFPS : MonoBehaviour
         //Si le joueur ne touche pas le sol
         if (!characterController.isGrounded)
         {
-            //Applique la gravité * deltaTime
-            //Time.deltaTime = Temps écoulé depuis la dernière frame
+            //Applique la gravitï¿½ * deltaTime
+            //Time.deltaTime = Temps ï¿½coulï¿½ depuis la derniï¿½re frame
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
@@ -125,19 +126,19 @@ public class PlayerFPS : MonoBehaviour
 
 
 
-        //Rotation de la caméra
+        //Rotation de la camï¿½ra
 
         //Input.GetAxis("Mouse Y") = mouvement de la souris haut/bas
         //On est en 3D donc applique ("Mouse Y") sur l'axe de rotation X 
         rotationX += -Input.GetAxis("Mouse Y") * rotationSpeed;
 
-        //La rotation haut/bas de la caméra est comprise entre -45 et 45 
+        //La rotation haut/bas de la camï¿½ra est comprise entre -45 et 45 
         //Mathf.Clamp permet de limiter une valeur
         //On limite rotationX, entre -rotationXLimit et rotationXLimit (-45 et 45)
         rotationX = Mathf.Clamp(rotationX, -rotationXLimit, rotationXLimit);
 
 
-        //Applique la rotation haut/bas sur la caméra
+        //Applique la rotation haut/bas sur la camï¿½ra
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
 
 
