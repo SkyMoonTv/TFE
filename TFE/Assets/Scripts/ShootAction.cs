@@ -119,6 +119,17 @@ public class ShootAction : MonoBehaviour
                         hit_AudioSource.PlayOneShot(audioHit);
 
                     }
+
+                    //S'assure que la cible touch�e a un composant ReceiveActionOpen
+                    if (hit.collider.gameObject.GetComponent<ReceiveActionRandom>() != null)
+                    {
+                        //Envoie les dommages � la cible
+                        hit.collider.gameObject.GetComponent<ReceiveActionRandom>().GetDamage(gunDamage);
+
+                        //Joue le son du Hit
+                        hit_AudioSource.PlayOneShot(audioHit);
+
+                    }
                 }   
             }
         }
