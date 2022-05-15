@@ -3,8 +3,6 @@ using UnityEngine.Events;
 
 public class ShootAction : MonoBehaviour
 {
-    //Creation UnityEvent
-    public UnityEvent<GameObject> OnFire;
 
     //Dommage que le Gun inflige
     [SerializeField]
@@ -72,9 +70,6 @@ public class ShootAction : MonoBehaviour
 
             //Son au tir
             gun_AudioSource.PlayOneShot(audioFire);
-
-            //Active l'animation
-            OnFire.Invoke(this.gameObject);
 
             //Met � jour le temps pour le prochain tir
             //Time.time = Temps �coul� depuis le lancement du jeu
