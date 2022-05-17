@@ -2854,7 +2854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &661587870
 Transform:
   m_ObjectHideFlags: 0
@@ -3789,6 +3789,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1442160289755032413, guid: f63e9f6c3e9d16f46aced473468ed823, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442160289843197162, guid: f63e9f6c3e9d16f46aced473468ed823, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1442160289843197163, guid: f63e9f6c3e9d16f46aced473468ed823, type: 3}
@@ -5146,7 +5150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &949566739
 Transform:
   m_ObjectHideFlags: 0
@@ -8920,6 +8924,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1442160289843197162, guid: f63e9f6c3e9d16f46aced473468ed823, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1442160289843197163, guid: f63e9f6c3e9d16f46aced473468ed823, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.45
@@ -9613,6 +9621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TargetToOpen (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1442160289755032412, guid: f63e9f6c3e9d16f46aced473468ed823, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1442160289755032413, guid: f63e9f6c3e9d16f46aced473468ed823, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -9676,6 +9688,10 @@ PrefabInstance:
     - target: {fileID: 1442160289843197158, guid: f63e9f6c3e9d16f46aced473468ed823, type: 3}
       propertyPath: m_Constraints
       value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442160289843197162, guid: f63e9f6c3e9d16f46aced473468ed823, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1442160289843197163, guid: f63e9f6c3e9d16f46aced473468ed823, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9758,7 +9774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1813161142}
   m_Layer: 0
-  m_Name: ' (Lvl7)'
+  m_Name: Finnish (Lvl7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
