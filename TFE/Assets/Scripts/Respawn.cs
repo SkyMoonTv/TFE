@@ -6,8 +6,8 @@ public class Respawn : MonoBehaviour
 {
     [SerializeField]
     private Transform player;
-    [SerializeField]
-    private Transform respawnPoint;
+    
+    public Transform respawnPoint;
 
     private void OnTriggerEnter(Collider other)
     {
