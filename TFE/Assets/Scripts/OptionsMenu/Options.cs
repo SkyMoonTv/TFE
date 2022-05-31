@@ -27,7 +27,6 @@ public class Options : MonoBehaviour
             visible = !visible;
             Panel.SetActive(visible);
             Cursor.visible = true;
-            
         }
     }
 
