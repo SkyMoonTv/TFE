@@ -31,9 +31,9 @@ public class Timer : MonoBehaviour
         float t = Time.time - startTime;
 
         //calcule les minutes
-        string minutes = ((int) t / 60).ToString();
+        string minutes = ((int) t / 60).ToString("0,0");
         //calcule les secondes. Le f2 dans le ToString sert à garder le nombre à 2 chiffres après la virgule
-        string secondes = (t % 60).ToString("f2");
+        string secondes = (t % 60).ToString("N3");
 
         //Affiche minutes:secondes
         timerText.text = minutes + ':' + secondes;
