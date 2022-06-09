@@ -901,6 +901,6 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/MenuPrincipal.unity
-  - Assets/Scenes/map1Easy.unity
   - Assets/Scenes/map1Hardcore.unity
+  - Assets/Scenes/map1Easy.unity
   playerPath: C:/Users/theoa/OneDrive/Bureau/The Game/TFE.exe
