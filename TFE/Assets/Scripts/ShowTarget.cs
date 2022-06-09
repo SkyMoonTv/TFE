@@ -10,8 +10,8 @@ public class ShowTarget : MonoBehaviour
         //Recherche le GameObject Player
         if (GameObject.Find("Player"))
         {
-            target.SetActive(true);
             //Active la fonction Finnish
+            target.SetActive(true);
         }
     }
 }

@@ -19,11 +19,7 @@ public class RandomSpawn : MonoBehaviour
 */
 
     public GameObject[] target;
-    void Start()
-    {
-      //  gameObject.SetActive(false);
-        
-    }
+
 
     public void SpawnFirstTarget()
     {
@@ -31,12 +27,6 @@ public class RandomSpawn : MonoBehaviour
     }
     public void SetTrue()
     {
-        /* int randomNumber = Random.Range(0,8);
-        if(number == randomNumber)
-        {
-            gameObject.SetActive(true);
-        }
-        */
         int i = Random.Range(0,target.Length);
         target[i].SetActive(true);
     }

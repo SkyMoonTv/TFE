@@ -18,7 +18,7 @@ public class ReceiveActionOpen : MonoBehaviour
 
     private void Start()
     {
-        //Au d�but : Points de vie actuels = Maximum de points de vie
+        //Au debut : Points de vie actuels = Maximum de points de vie
         hitPoint = maxHitPoint;
     }
 
@@ -30,7 +30,7 @@ public class ReceiveActionOpen : MonoBehaviour
         hitPoint -= damage;
 
 
-        //Si les point de vie sont inf�rieurs � 1 = Supprime l'objet
+        //Si les point de vie sont inferieurs a 1 = Supprime l'objet
         if (hitPoint < 1)
         {
             Destroy(door);

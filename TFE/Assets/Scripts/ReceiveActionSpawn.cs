@@ -33,6 +33,7 @@ public class ReceiveActionSpawn : MonoBehaviour
         //Si les point de vie sont inf�rieurs � 1 = Supprime l'objet
         if (hitPoint < 1)
         {
+            //Active l'objet
             door.SetActive(true);
             Destroy(gameObject);
         }

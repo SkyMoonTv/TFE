@@ -15,7 +15,6 @@ public class Win : MonoBehaviour
                 _winScreen.SetActive(true);
                 Cursor.visible = true;
                 Time.timeScale = 0f;
-                //Physics.SyncTransforms();
             }
         }
 }
