@@ -163,8 +163,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1606}
     - Class: 114
-      Script: {instanceID: 1628}
-    - Class: 114
       Script: {instanceID: 1666}
     - Class: 114
       Script: {instanceID: 1736}
@@ -178,10 +176,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 2100}
     - Class: 114
       Script: {instanceID: 2162}
-    - Class: 114
-      Script: {instanceID: 2172}
-    - Class: 114
-      Script: {instanceID: 2180}
     - Class: 114
       Script: {instanceID: 2336}
     - Class: 114
@@ -901,6 +895,6 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/MenuPrincipal.unity
-  - Assets/Scenes/map1Hardcore.unity
   - Assets/Scenes/map1Easy.unity
-  playerPath: C:/Users/theoa/OneDrive/Bureau/The Game/TFE.exe
+  - Assets/Scenes/map1Hardcore.unity
+  playerPath: C:/Users/theoa/OneDrive/Bureau/The Game Compressed/Run Rage/Run-Rage/TFE.exe
